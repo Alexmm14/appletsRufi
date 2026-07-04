@@ -36,19 +36,19 @@ fi
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
-	option_1=" Github"
-	option_2=" Teams"
-	option_3=" Teams (Trabajo)"
-	option_4=" Spotify"
-	option_5=" Gemini"
-	option_6=" WhatsApp"
+	option_1=" Spotify"
+	option_2=" WhatsApp"
+	option_3=" Gemini"
+	option_4=" Github"
+	option_5=" Teams (Pers)"
+	option_6=" Teams (Trab)"
 else
-	option_1=""
-	option_2=""
-	option_3=""
-	option_4=""
-	option_5=""
-	option_6=""
+	option_1=""
+	option_2=""
+	option_3=""
+	option_4=""
+	option_5=""
+	option_6=""
 fi
 
 # Rofi CMD
@@ -71,17 +71,17 @@ run_rofi() {
 # Execute Command
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
-		google-chrome-stable --profile-directory="$MOLINAA757" 'https://www.github.com/'
-	elif [[ "$1" == '--opt2' ]]; then
-		google-chrome-stable --profile-directory="$DROPDATABASEALEJANDRO" 'https://teams.microsoft.com/'
-	elif [[ "$1" == '--opt3' ]]; then
-		google-chrome-stable --profile-directory="$ALEJANDROMOLINAMEDINA" 'https://teams.microsoft.com/'
-	elif [[ "$1" == '--opt4' ]]; then
 		flatpak run com.spotify.Client
-	elif [[ "$1" == '--opt5' ]]; then
-		/opt/google/chrome/google-chrome --profile-directory="$MOLINAA757" --app-id=aenkghcjmafhmiloejakejkpbhaipmjc --class=gemini-desktop
-	elif [[ "$1" == '--opt6' ]]; then
+	elif [[ "$1" == '--opt2' ]]; then
 		/opt/google/chrome/google-chrome --profile-directory="$MOLINAA757" --app-id=hnpfjngllnobngcgfapefoaidbinmjnm --class=whatsapp-desktop
+	elif [[ "$1" == '--opt3' ]]; then
+		/opt/google/chrome/google-chrome --profile-directory="$MOLINAA757" --app-id=aenkghcjmafhmiloejakejkpbhaipmjc --class=gemini-desktop
+	elif [[ "$1" == '--opt4' ]]; then
+		google-chrome-stable --profile-directory="$MOLINAA757" 'https://www.github.com/'
+	elif [[ "$1" == '--opt5' ]]; then
+		google-chrome-stable --profile-directory="$DROPDATABASEALEJANDRO" 'https://teams.microsoft.com/'
+	elif [[ "$1" == '--opt6' ]]; then
+		google-chrome-stable --profile-directory="$ALEJANDROMOLINAMEDINA" 'https://teams.microsoft.com/'
 	fi
 }
 
