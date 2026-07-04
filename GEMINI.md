@@ -21,16 +21,19 @@ El código está organizado para mantener una estructura plana y modular en el r
 
 ```
 /home/al3xmm14/Documentos/projects/appletsRufi/
-├── appasroot.sh           # Script para ejecutar comandos con privilegios
-├── apps.sh                # Lanzador de aplicaciones
-├── battery.sh             # Monitor de batería
-├── brightness.sh          # Control de brillo
-├── mpd.sh                 # Controlador MPD
-├── powermenu.sh           # Menú principal de energía
-├── quicklinks.sh          # Lanzador de accesos directos
-├── rofi-power.sh          # Script auxiliar de energía para Rofi
-├── screenshot.sh          # Capturas de pantalla
-├── volume.sh              # Control de volumen
+├── scripts/               # Directorio que contiene todos los scripts
+│   ├── appasroot.sh
+│   ├── apps.sh
+│   ├── battery.sh
+│   ├── brightness.sh
+│   ├── mpd.sh
+│   ├── powermenu.sh
+│   ├── quicklinks.sh
+│   ├── rofi-power.sh
+│   ├── screenshot.sh
+│   └── volume.sh
+├── GEMINI.md              # Guía de desarrollo
+├── GEMINI.md.example      # Archivo de ejemplo de configuración
 ├── COMMIT_CONVENTIONS.md  # Reglas para mensajes de commit
 └── .git/
 ```
