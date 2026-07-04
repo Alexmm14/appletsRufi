@@ -5,6 +5,11 @@
 #
 ## Applets : Quick Links
 
+# Chrome Profiles
+MOLINAA757="Default"
+DROPDATABASEALEJANDRO="Profile 1"
+ALEJANDROMOLINAMEDINA="Profile 2"
+
 # Import Current Theme
 source "$HOME"/.config/rofi/applets/shared/theme.bash
 theme="$type/$style"
@@ -30,24 +35,20 @@ fi
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
-	option_1=" Google"
-	option_2=" Gmail"
-	option_3=" Youtube"
-	option_4=" Github"
-	option_5=" Reddit"
-	option_6=" Twitter"
+	option_1=" Github"
+	option_2=" Teams"
+	option_3=" Teams (Trabajo)"
+	option_4=" Spotify"
 else
-	option_1=""
-	option_2=""
-	option_3=""
-	option_4=""
-	option_5=""
-	option_6=""
+	option_1=""
+	option_2=""
+	option_3=""
+	option_4=""
 fi
 
 # Rofi CMD
 rofi_cmd() {
-	rofi -theme-str "listview {columns: $list_col; lines: $list_row;}" \
+	rofi -theme-str "listview {columns: 4; lines: 1;}" \
 		-theme-str 'textbox-prompt-colon {str: "";}' \
 		-theme-str "element-text {font: \"$efonts\";}" \
 		-dmenu \
@@ -59,23 +60,19 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6" | rofi_cmd
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4" | rofi_cmd
 }
 
 # Execute Command
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
-		xdg-open 'https://www.google.com/'
+		google-chrome-stable --profile-directory="$MOLINAA757" 'https://www.github.com/'
 	elif [[ "$1" == '--opt2' ]]; then
-		xdg-open 'https://mail.google.com/'
+		google-chrome-stable --profile-directory="$DROPDATABASEALEJANDRO" 'https://teams.microsoft.com/'
 	elif [[ "$1" == '--opt3' ]]; then
-		xdg-open 'https://www.youtube.com/'
+		google-chrome-stable --profile-directory="$ALEJANDROMOLINAMEDINA" 'https://teams.microsoft.com/'
 	elif [[ "$1" == '--opt4' ]]; then
-		xdg-open 'https://www.github.com/'
-	elif [[ "$1" == '--opt5' ]]; then
-		xdg-open 'https://www.reddit.com/'
-	elif [[ "$1" == '--opt6' ]]; then
-		xdg-open 'https://www.twitter.com/'
+		flatpak run com.spotify.Client
 	fi
 }
 
@@ -93,11 +90,5 @@ case ${chosen} in
         ;;
     $option_4)
 		run_cmd --opt4
-        ;;
-    $option_5)
-		run_cmd --opt5
-        ;;
-    $option_6)
-		run_cmd --opt6
         ;;
 esac
