@@ -36,12 +36,13 @@ fi
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
-	option_1=" Spotify"
-	option_2=" WhatsApp"
-	option_3=" Gemini"
-	option_4=" Github"
-	option_5=" Teams (Pers)"
-	option_6=" Teams (Trab)"
+	option_1=""
+	option_2=""
+	option_3=""
+	option_4=""
+	option_5=""
+	option_6=""
+	option_7=""
 else
 	option_1=""
 	option_2=""
@@ -49,11 +50,13 @@ else
 	option_4=""
 	option_5=""
 	option_6=""
+	option_7=""
+
 fi
 
 # Rofi CMD
 rofi_cmd() {
-	rofi -theme-str "listview {columns: 6; lines: 1;}" \
+	rofi -theme-str "listview {columns: 7; lines: 1;}" \
 		-theme-str 'textbox-prompt-colon {str: "";}' \
 		-theme-str "element-text {font: \"$efonts\";}" \
 		-dmenu \
@@ -65,7 +68,7 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6" | rofi_cmd
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7" | rofi_cmd
 }
 
 # Execute Command
@@ -82,6 +85,8 @@ run_cmd() {
 		google-chrome-stable --profile-directory="$DROPDATABASEALEJANDRO" 'https://teams.microsoft.com/'
 	elif [[ "$1" == '--opt6' ]]; then
 		google-chrome-stable --profile-directory="$ALEJANDROMOLINAMEDINA" 'https://teams.microsoft.com/'
+	elif [[ "$1" == '--opt7' ]]; then
+		google-chrome-stable
 	fi
 }
 
@@ -105,5 +110,8 @@ case ${chosen} in
         ;;
 	$option_6)
 		run_cmd --opt6
+        ;;
+	$option_7)
+		run_cmd --opt7
         ;;
 esac
